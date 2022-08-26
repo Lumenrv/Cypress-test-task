@@ -1,0 +1,5 @@
+node_modules
+cypress/support
+logs
+*.log
+cypress/downloads
