@@ -1,11 +1,13 @@
 require("cypress-xpath");
 import JoinTheWaitlistPage from "../../../Pages/JoinTheWaitlistPage";
+const mainPage = "https://telnyx.com/";
+const acceptCoockiesBtn = '[class="sc-5d3a275a-0 jdjrgE"]';
 describe("WaitList test", () => {
   const joinTheWaitlistPage = new JoinTheWaitlistPage();
   it("Test the “Join the waitlist” button", () => {
-    cy.visit("https://telnyx.com/");
+    cy.visit(mainPage);
     cy.wait(2000);
-    cy.get('[class="sc-5d3a275a-0 jdjrgE"]').first().click();
+    cy.get(acceptCoockiesBtn).first().click();
     cy.wait(1000);
     joinTheWaitlistPage.JoinTheWaitlistBtn().click();
     cy.wait(1000);

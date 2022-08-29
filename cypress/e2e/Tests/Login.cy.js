@@ -1,13 +1,14 @@
 import LoginPage from "../../../Pages/LoginPage";
+const loginPortal = "https://portal.telnyx.com/#/login/sign-in";
 require("cypress-xpath");
 describe("Login page test", () => {
   const loginPage = new LoginPage();
   beforeEach(() => {
-    cy.visit("https://portal.telnyx.com/#/login/sign-in");
+    cy.visit(loginPortal);
   });
 
   it("Test login with an invalid password", () => {
-    loginPage.emailInput().type("sokesi7058@lurenwu.com");
+    loginPage.emailInput().type(loginPage.exisstingUserEmail());
     loginPage.passwordInput().type(loginPage.randomPasswordGenerator());
     loginPage.SubmitBtn().click();
     loginPage
@@ -17,7 +18,7 @@ describe("Login page test", () => {
 
   it("Test login with an invalid email", () => {
     loginPage.emailInput().type(loginPage.randomEmailGenerator());
-    loginPage.passwordInput().type("CyppressTestSt1234@");
+    loginPage.passwordInput().type(loginPage.exisstingUserPassword());
     loginPage.SubmitBtn().click();
     loginPage
       .errorMessage()
